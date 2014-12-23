@@ -26,3 +26,6 @@
 *.exe
 *.out
 *.app
+
+3rdparty/rapidjson
+3rdpart/websocketpp
