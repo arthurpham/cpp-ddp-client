@@ -1,6 +1,6 @@
 [submodule "3rdparty/rapidjson"]
 	path = 3rdparty/rapidjson
-	url = git@github.com:miloyip/rapidjson.git
+	url = git://github.com/miloyip/rapidjson.git
 [submodule "3rdparty/websocketpp"]
 	path = 3rdparty/websocketpp
-	url = git@github.com:zaphoyd/websocketpp.git
+	url = git://github.com/zaphoyd/websocketpp.git
