@@ -54,7 +54,7 @@ INCLUDE_DIRECTORIES( ${PROJ_INCLUDES} ) # Include path
 # ENDIF(STATIC)
 ADD_EXECUTABLE(cppdppclient ${PROJ_SOURCES} )
 
-TARGET_LINK_LIBRARIES( cppdppclient ${PROJ_LIBRARIES} boost_system boost_random)
+TARGET_LINK_LIBRARIES( cppdppclient ${PROJ_LIBRARIES} ${Boost_LIBRARIES})
 
 
 ############################# Target Properties ###############################
