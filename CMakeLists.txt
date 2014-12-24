@@ -29,6 +29,13 @@ SET( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJ_PATH} )
 #SET( PROJ_INCLUDES  ${PROJ_INCLUDES}  ${<LibraryName>_INCLUDE_DIR} )
 #SET( PROJ_LIBRARIES ${PROJ_LIBRARIES} ${<LibraryName>_LIBRARIES}   )
 
+SET(BOOST_ROOT "/usr/local/Cellar/boost/1.57.0")
+
+FIND_PACKAGE(Boost 1.39 COMPONENTS system random REQUIRED)
+MESSAGE(status "** Boost Include: ${Boost_INCLUDE_DIR}")
+MESSAGE(status "** Boost Libraries: ${Boost_LIBRARY_DIRS}")
+MESSAGE(status "** Boost Libraries: ${Boost_LIBRARIES}")
+
 ################################ Includes #####################################
 INCLUDE_DIRECTORIES( ${PROJ_INCLUDES} ) # Include path
 
@@ -37,16 +44,17 @@ INCLUDE_DIRECTORIES( ${PROJ_INCLUDES} ) # Include path
 FILE( GLOB_RECURSE PROJ_HEADERS src/*.h)
 FILE( GLOB_RECURSE PROJ_SOURCES src/*.cpp )
 
-SET( PROJ_INCLUDES ${PROJ_INCLUDES} 3rdparty/websocketpp 3rdparty/rapidjson)
+SET( PROJ_INCLUDES ${PROJ_INCLUDES} 3rdparty/websocketpp 3rdparty/rapidjson ${Boost_INCLUDE_DIR})
 INCLUDE_DIRECTORIES( ${PROJ_INCLUDES} ) # Include path
 
-IF(STATIC)
-	ADD_LIBRARY( cppdppclient STATIC ${PROJ_SOURCES} ${PROJ_HEADERS})
-ELSE ( ON )
-	ADD_LIBRARY( cppdppclient SHARED ${PROJ_SOURCES} ${PROJ_HEADERS})
-ENDIF(STATIC)
+# IF(STATIC)
+# 	ADD_LIBRARY( cppdppclient STATIC ${PROJ_SOURCES} ${PROJ_HEADERS})
+# ELSE ( ON )
+# 	ADD_LIBRARY( cppdppclient SHARED ${PROJ_SOURCES} ${PROJ_HEADERS})
+# ENDIF(STATIC)
+ADD_EXECUTABLE(cppdppclient ${PROJ_SOURCES} )
 
-TARGET_LINK_LIBRARIES( cppdppclient ${PROJ_LIBRARIES})
+TARGET_LINK_LIBRARIES( cppdppclient ${PROJ_LIBRARIES} boost_system boost_random)
 
 
 ############################# Target Properties ###############################
