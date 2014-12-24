@@ -36,6 +36,20 @@ MESSAGE(status "** Boost Include: ${Boost_INCLUDE_DIR}")
 MESSAGE(status "** Boost Libraries: ${Boost_LIBRARY_DIRS}")
 MESSAGE(status "** Boost Libraries: ${Boost_LIBRARIES}")
 
+######################## Specific preprocessor  tags ##########################
+IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    IF ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+        SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpermissive")
+    ENDIF ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+
+    SET( PROJ_LIBRARIES ${PROJ_LIBRARIES} pthread)
+ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+
+
+
+
+
+
 ################################ Includes #####################################
 INCLUDE_DIRECTORIES( ${PROJ_INCLUDES} ) # Include path
 
