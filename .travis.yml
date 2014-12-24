@@ -5,7 +5,7 @@ compiler:
 before_script:
   - sudo add-apt-repository --yes ppa:boost-latest/ppa
   - sudo apt-get update -qq
-  - sudo apt-get install -qq libboost-all-dev cmake libboost-random-dev
+  - sudo apt-get install -qq libboost1.55-all-dev cmake libboost-random1.55-dev
 
 script:
   - mkdir -p bin/release
