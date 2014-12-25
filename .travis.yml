@@ -1,6 +1,7 @@
 language: cpp
 compiler:
   - gcc
+  - clang
 
 before_script:
   - sudo add-apt-repository --yes ppa:boost-latest/ppa
